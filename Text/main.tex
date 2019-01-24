@@ -1,0 +1,214 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Создание и заполнение отношений БД фитнес-клуба
+
+\begin{enumerate}
+	\item Отношение "Группы" (поля "Название" (ПК), "Примечание").
+	\item	Отношение "Клиенты" (поля "ФИО", "№ абонемента" (ПК), "Группа" (ВнК), "Дата рождения", "Пол", "Вес", "Рост", "Начало действия абонемента", "Окончание действия абонемента", "Телефон").
+	\item	Отношение "Тренеры" (поля "Идентификатор" (ПК), "ФИО", "Должность", "Телефон").
+	\item	Отношение "Расписание занятий":
+\end{enumerate}
+	\begin{table}[!h]
+	\begin{center}
+		\begin{flushleft}
+			\tablecaption{Отношение <<Расписание занятий>>}
+		\end{flushleft}
+
+		\begin{tabular}{|l|c|c|c|l|}
+			\hline
+			\textit{Содержимое поля} & \textit{Тип} & \textit{Длина} & \textit{Дес.} & \textit{Примечание}              \\ \hline
+			Идентификатор            & N            & 6              & 0             & первичный ключ                   \\ \hline
+			Группа                   & C            & 20             &               & внешний ключ к таблице "Группы"  \\ \hline
+			Тренер                   & N            & 5              & 0             & внешний ключ к таблице "Тренеры" \\ \hline
+			Вид занятий              & С            & 30             &               & обязательное поле                \\ \hline
+			Зал                      & С            & 10             &               & задать список значений           \\ \hline
+			День недели              & С            & 2              &               & пн, вт, ср, чт, пт, сб, вс       \\ \hline
+			Начало занятий           & Т            &                &               & обязательное поле                \\ \hline
+			Продолжительность        & Т            &                &               & обязательное поле                \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\section{Выполнение работы}
+
+\subsection{Создание базы данных}
+
+	Создаётся база данных фитнес-клуба (\imref{img:createDB})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/createDB.png}
+		\caption{Создание базы данных}\label{img:createDB}
+	\end{figure}
+
+\subsection{Создание таблиц базы данных}
+
+	Создаётся таблица группы (\imref{img:createTeam})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.5\linewidth]{image/createTeam.png}
+		\caption{Создание таблицы групп}\label{img:createTeam}
+	\end{figure}
+	
+	Результат операции (\imref{img:resTeam})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/resTeam}
+		\caption{Результат создания таблицы групп}\label{img:resTeam}
+	\end{figure} 
+
+	Создаётся таблица клиентов (\imref{img:createClient})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=1\linewidth]{image/createClient.png}
+		\caption{Создание таблицы клиентов}\label{img:createClient}
+	\end{figure}
+	
+	Результат операции (\imref{img:resClient})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/resClient}
+		\caption{Результат создания таблицы клиентов}\label{img:resClient}
+	\end{figure} 
+
+	Создаётся таблица тренеров (\imref{img:createCoach})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=1\linewidth]{image/createCoach.png}
+		\caption{Создание таблицы тренеров}\label{img:createCoach}
+	\end{figure}
+	
+	Результат операции (\imref{img:resCoach})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/resCoach}
+		\caption{Результат создания таблицы тренеров}\label{img:resCoach}
+	\end{figure} 
+
+	Создаётся таблица расписания (\imref{img:createScheduler})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=1\linewidth]{image/createScheduler.png}
+		\caption{Создание таблицы расписания}\label{img:createScheduler}
+	\end{figure}
+	
+	Результат операции (\imref{img:resScheduler})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/resScheduler}
+		\caption{Результат создания таблицы расписания}\label{img:resScheduler}
+	\end{figure} 
+
+\subsection{Добавление данных}
+
+	Добавление групп (\imref{img:insertTeam})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/insertTeam}
+		\caption{Добавление групп}\label{img:insertTeam}
+	\end{figure} 
+	
+	Результат операции (\imref{img:selectTeam})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/selectTeam}
+		\caption{Результат добавления групп}\label{img:selectTeam}
+	\end{figure} 
+
+	Добавление клиентов (\imref{img:insertClient})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/insertClient}
+		\caption{Добавление клиентов}\label{img:insertClient}
+	\end{figure} 
+	
+	Результат операции (\imref{img:selectClient})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/selectClient}
+		\caption{Результат добавления клиентов (первые 20 записей)}\label{img:selectClient}
+	\end{figure} 
+
+	Добавление тренеров (\imref{img:insertCoach})
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/insertCoach}
+		\caption{Добавление тренеров}\label{img:insertCoach}
+	\end{figure} 
+	
+	Результат операции (\imref{img:selectCoach})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/selectCoach}
+		\caption{Результат добавления тренеров }\label{img:selectCoach}
+	\end{figure} 
+
+	Добавление расписания (\imref{img:insertScheduler})
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/insertScheduler}
+		\caption{Добавление расписания}\label{img:insertScheduler}
+	\end{figure} 
+	
+	Результат операции (\imref{img:selectScheduler})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/selectScheduler}
+		\caption{Результат добавления расписания}\label{img:selectScheduler}
+	\end{figure}
+ 
+\section{Вывод}
+
+В процессе выполнения практической работы получены навыки взаимодействия с СУБД MySQL. 
+Была создана база с 4 таблицами. 
+Поля данных в данной базе имеют следующие типы: целочисленный (INTEGER, NUMERIC), временной (DATE, TIME), строковый (CHAR, VARCHAR).
+Первичный ключ, который идентифицирует каждую запись таблицы задаётся параметром PRIMARY KEY.
+С помощью FOREIGN KEY -- внешнего ключа -- можно сослаться на поле в другой таблице, которое является первичным или уникальным.
+Для обязательных полей используется параметр NOT NULL.
+Для валидации полей используется параметр CONSTRAINT CHECK, однако MySQL не поддерживает данные вычисления \cite{sql}.
+Данные выводятся с помощью команды SELECT.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{sql} Beaulieu A. Learning SQL: Master SQL Fundamentals. – " O'Reilly Media, Inc.", 2009.
+	
+\end{thebibliography}
+
+\end{document} % конец документа

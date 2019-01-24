@@ -1,0 +1,249 @@
+
+%%% Работа с русским языком
+\usepackage[english,russian]{babel}   %% загружает пакет многоязыковой вёрстки
+\usepackage{fontspec}      %% подготавливает загрузку шрифтов Open Type, True Type и др.
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}  %% свойства шрифтов по умолчанию
+\setmainfont[Ligatures={TeX,Historic}]{Times New Roman} %% задаёт основной шрифт документа
+\setsansfont{Comic Sans MS}                    %% задаёт шрифт без засечек
+\setmonofont{Courier New}
+\usepackage{indentfirst}
+\frenchspacing
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\emptyset}{\varnothing}
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумерация формул слева	
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\usepackage{float}% http://ctan.org/pkg/float
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{top=20mm}
+\geometry{bottom=20mm}
+\geometry{left=20mm}
+\geometry{right=10mm}
+%
+%\usepackage{fancyhdr} % Колонтитулы
+% 	\pagestyle{fancy}
+%\renewcommand{\headrulewidth}{0pt}  % Толщина линейки, отчеркивающей верхний колонтитул
+% 	\lfoot{Нижний левый}
+% 	\rfoot{Нижний правый}
+% 	\rhead{Верхний правый}
+% 	\chead{Верхний в центре}
+% 	\lhead{Верхний левый}
+%	\cfoot{Нижний в центре} % По умолчанию здесь номер страницы
+
+\usepackage{setspace} % Интерлиньяж
+\onehalfspacing % Интерлиньяж 1.5
+%\doublespacing % Интерлиньяж 2
+%\singlespacing % Интерлиньяж 1
+
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+
+\usepackage{soul} % Модификаторы начертания
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{				% Гиперссылки
+	unicode=true,           % русские буквы в раздела PDF
+	pdftitle={Практическая по БД 1},   % Заголовок
+	pdfauthor={Подчезерцев Алексей},      % Автор
+	pdfsubject={Создание и заполнение отношений БД фитнес-клуба},      % Тема
+	pdfcreator={Подчезерцев Алексей}, % Создатель
+	pdfproducer={Подчезерцев Алексей}, % Производитель
+	pdfkeywords={БД} {SQL} {MySQL}, % Ключевые слова
+	colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+	linkcolor=black,          % внутренние ссылки
+	citecolor=black,        % на библиографию
+	filecolor=magenta,      % на файлы
+	urlcolor=black           % на URL
+}
+\makeatletter 
+\def\@biblabel#1{#1. } 
+\makeatother
+\usepackage{cite} % Работа с библиографией
+%\usepackage[superscript]{cite} % Ссылки в верхних индексах
+%\usepackage[nocompress]{cite} % 
+\usepackage{csquotes} % Еще инструменты для ссылок
+
+\usepackage{multicol} % Несколько колонок
+
+\usepackage{tikz} % Работа с графикой
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+% ГОСТ заголовки
+\usepackage[font=small]{caption}
+%\captionsetup[table]{justification=centering, labelsep = newline} % Таблицы по правобу краю
+%\captionsetup[figure]{justification=centering} % Картинки по центру
+
+
+\newcommand{\tablecaption}[1]{\addtocounter{table}{1}\small \begin{flushright}\tablename \ \thetable\end{flushright}%	
+\begin{center}#1\end{center}}
+
+\newcommand{\imref}[1]{Рис.~\ref{#1}}
+
+\usepackage{multirow}
+\usepackage{spreadtab}
+\newcolumntype{K}[1]{@{}>{\centering\arraybackslash}p{#1cm}@{}}
+
+
+\usepackage{xparse}
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\juliandate}{ m m m }
+{
+	\juliandate_calc:nnnn { #1 } { #2 } { #3 } { \use:n }
+}
+\NewDocumentCommand{\storejuliandate}{ s m m m m }
+{
+	\IfBooleanTF{#1}
+	{
+		\juliandate_calc:nnnn { #3 } { #4 } { #5 } { \cs_set:Npx #2 }
+	}
+	{
+		\juliandate_calc:nnnn { #3 } { #4 } { #5 } { \cs_new:Npx #2 }
+	}
+}
+\cs_new:Npn \juliandate_calc:nnnn #1 #2 #3 #4 % #1 = day, #2 = month, #3 = year, #4 = what to do
+{
+	#4 
+	{
+		\int_eval:n
+		{
+			#1 +
+			\int_div_truncate:nn { 153 * (#2 + 12 * \int_div_truncate:nn { 14 - #2 } { 12 } - 3) + 2 } { 5 } +
+			365 * (#3 + 4800 - \int_div_truncate:nn { 14 - #2 } { 12 } ) +
+			\int_div_truncate:nn { #3 + 4800 - \int_div_truncate:nn { 14 - #2 } { 12 } } { 4 } -
+			\int_div_truncate:nn { #3 + 4800 - \int_div_truncate:nn { 14 - #2 } { 12 } } { 100 } + 
+			\int_div_truncate:nn { #3 + 4800 - \int_div_truncate:nn { 14 - #2 } { 12 } } { 400 } -
+			32045
+		}
+	}
+}
+
+\tl_new:N \l__juliandate_g_tl
+\tl_new:N \l__juliandate_dg_tl
+\tl_new:N \l__juliandate_c_tl
+\tl_new:N \l__juliandate_dc_tl
+\tl_new:N \l__juliandate_b_tl
+\tl_new:N \l__juliandate_db_tl
+\tl_new:N \l__juliandate_a_tl
+\tl_new:N \l__juliandate_da_tl
+\tl_new:N \l__juliandate_y_tl
+\tl_new:N \l__juliandate_m_tl
+\tl_new:N \l__juliandate_d_tl
+\int_new:N \l_juliandate_day_int
+\int_new:N \l_juliandate_month_int
+\int_new:N \l_juliandate_year_int
+
+\cs_new:Npn \__juliandate_set:nn #1 #2
+{
+	\tl_set:cx { l__juliandate_#1_tl } { \int_eval:n { #2 } }
+}
+\cs_new:Npn \__juliandate_use:n #1
+{
+	\tl_use:c { l__juliandate_#1_tl }
+}
+\cs_new_protected:Npn \juliandate_reverse:n #1
+{
+	\__juliandate_set:nn { g }
+	{ \int_div_truncate:nn { #1 + 32044 } { 146097 } }
+	\__juliandate_set:nn { dg }
+	{ \int_mod:nn { #1 + 32044 } { 146097 } }
+	\__juliandate_set:nn { c }
+	{ \int_div_truncate:nn { ( \int_div_truncate:nn { \__juliandate_use:n { dg } } { 36524 } + 1) * 3 } { 4 } }
+	\__juliandate_set:nn { dc }
+	{ \__juliandate_use:n { dg } - \__juliandate_use:n { c } * 36524 }
+	\__juliandate_set:nn { b }
+	{ \int_div_truncate:nn { \__juliandate_use:n { dc } } { 1461 } }
+	\__juliandate_set:nn { db }
+	{ \int_mod:nn { \__juliandate_use:n { dc } } { 1461 } }
+	\__juliandate_set:nn { a }
+	{ \int_div_truncate:nn { ( \int_div_truncate:nn { \__juliandate_use:n { db } } { 365 } + 1) * 3 } { 4 } }
+	\__juliandate_set:nn { da }
+	{ \__juliandate_use:n { db } - \__juliandate_use:n { a } * 365 }
+	\__juliandate_set:nn { y }
+	{
+		\__juliandate_use:n { g } * 400 + 
+		\__juliandate_use:n { c } * 100 + 
+		\__juliandate_use:n { b } * 4 + 
+		\__juliandate_use:n { a }
+	}
+	\__juliandate_set:nn { m }
+	{ \int_div_truncate:nn { \__juliandate_use:n { da } * 5 + 308 } { 153 } - 2 }
+	\__juliandate_set:nn { d }
+	{ \__juliandate_use:n { da } - \int_div_truncate:nn { (\__juliandate_use:n { m } + 4) * 153 } { 5 } + 122 }
+	\int_set:Nn \l_juliandate_year_int
+	{ \__juliandate_use:n { y } - 4800 + \int_div_truncate:nn { \__juliandate_use:n { m } + 2 } { 12 } }
+	\int_set:Nn \l_juliandate_month_int
+	{ \int_mod:nn { \__juliandate_use:n { m } + 2 } { 12 } + 1 }
+	\int_set:Nn \l_juliandate_day_int
+	{ \__juliandate_use:n { d } + 1 }
+}
+\cs_generate_variant:Nn \juliandate_reverse:n { x }
+
+\NewDocumentCommand{\showday}{ m }
+{
+	\juliandate_reverse:n { #1 }
+	\int_to_arabic:n { \l_juliandate_day_int }-
+	\int_to_arabic:n { \l_juliandate_month_int }-
+	\int_to_arabic:n { \l_juliandate_year_int }
+}
+
+\NewDocumentCommand{\tomorrow}{ }
+{
+	\group_begin:
+	\juliandate_reverse:x { \juliandate_calc:nnnn { \day + 1 } { \month } { \year } { \use:n } }
+	\day = \l_juliandate_day_int
+	\month = \l_juliandate_month_int
+	\year = \l_juliandate_year_int
+	\today
+	\group_end:
+}
+\NewDocumentCommand{\tomorrowof}{ m m m }
+{
+	\group_begin:
+	\juliandate_reverse:x { \juliandate_calc:nnnn { #1 + 1 } { #2 } { #3 } { \use:n } }
+	\day = \l_juliandate_day_int
+	\month = \l_juliandate_month_int
+	\year = \l_juliandate_year_int
+	\today
+	\group_end:
+}
+\ExplSyntaxOff
+
+
+\usepackage{xcolor,listings}
+\usepackage{textcomp}

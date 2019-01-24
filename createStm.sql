@@ -1,3 +1,7 @@
+CREATE DATABASE fitness;
+
+USE fitness;
+
 CREATE TABLE IF NOT EXISTS `team`
 (
   name VARCHAR(20) PRIMARY KEY,
