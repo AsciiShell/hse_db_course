@@ -143,3 +143,7 @@ CREATE TRIGGER `scheduler_before_update`
 BEGIN
   CALL check_scheduler(new.room, new.day_of_week, new.start, new.end);
 END$$
+
+DELIMITER ;
+
+

@@ -200,7 +200,16 @@
 С помощью FOREIGN KEY -- внешнего ключа -- можно сослаться на поле в другой таблице, которое является первичным или уникальным.
 Для обязательных полей используется параметр NOT NULL.
 Для валидации полей используется параметр CONSTRAINT CHECK, однако MySQL не поддерживает данные вычисления \cite{sql}.
+Для реализации проверки можно использовать триггеры BEFORE INSERT и BEFORE UPDATE (\imref{img:insertScheduler}).
 Данные выводятся с помощью команды SELECT.
+
+\begin{figure}[H]
+	\centering		
+	\includegraphics[width=\linewidth]{image/triggerScheduler}
+	\caption{Пример триггера для проверки расписания}\label{img:triggerScheduler}
+\end{figure}
+
+
 
 \newpage 
 \renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
