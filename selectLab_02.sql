@@ -24,23 +24,21 @@ ORDER BY DAY(birthday);
 
 -- •	групп с указанием количества клиентов на сегодняшний день;
 SELECT team.*, COUNT(*) AS count
-FROM team,
-     scheduler,
-     client
-WHERE client.team_name = team.name
-  AND scheduler.team_name = team.name
-  AND scheduler.day_of_week = DAYOFWEEK(NOW())
+FROM scheduler
+       INNER JOIN team ON team.name = scheduler.team_name
+       INNER JOIN client ON team.name = client.team_name
+WHERE scheduler.day_of_week = DAYOFWEEK(NOW())
 GROUP BY team.name
 ORDER BY count;
 
 -- •	общая продолжительность занятий в каждом зале по дням недели.
-SELECT scheduler.room, day_of_week, (SUM(scheduler.end - scheduler.start) / 100) AS duration
+SELECT room, day_of_week, (SUM(end - start) / 100) AS duration
 FROM scheduler
-GROUP BY scheduler.room, scheduler.day_of_week
-ORDER BY scheduler.day_of_week, scheduler.room DESC;
+GROUP BY room, day_of_week
+ORDER BY day_of_week, room DESC;
 
 -- Вывести расписание занятий в определённом зале.
 SELECT *
 FROM scheduler
 WHERE room = 'Бассейн'
-ORDER BY day_of_week;
+ORDER BY day_of_week, start;

@@ -1,0 +1,162 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title_02.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Один из запросов надо написать двумя способами и объяснить, какой из вариантов будет работать быстрее и почему.
+Создать упорядоченные списки:
+
+\begin{enumerate}
+	\item Клиентов группы "Брейк-данс", у которых срок действия абонемента заканчивается в этом месяце;
+	\item Клиентов, у которых дни рождения в текущем месяце;
+	\item Групп с указанием количества клиентов на сегодняшний день;
+	\item Общая продолжительность занятий в каждом зале по дням недели;
+	\item Вывести расписание занятий в определённом зале.
+\end{enumerate}
+
+\section{Выполнение работы}
+
+\subsection{Клиенты группы <<Брейк-данс>>, у которых срок действия абонемента заканчивается в этом месяце}
+
+	Выполнение быстрого запроса (\imref{img:selectLab_02_01})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/selectLab_02_01}
+		\caption{Быстрый вариант запроса}\label{img:selectLab_02_01}
+	\end{figure}
+
+	Выполнение вложенного запроса (\imref{img:selectLab_02_02})
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/selectLab_02_02}
+		\caption{Вложенный вариант запроса}\label{img:selectLab_02_02}
+	\end{figure}
+ 
+ 	Сравнительная характеристика запросов (\imref{img:selectLab_02_01_Time}).
+ 	Вложенные запросы работают медленнее, так как сначала выполняется вложенный запрос, обрабатывающий всю таблицу и возвращающий большое число записей, затем внешний, который так же обрабатывает всю таблицу и дополнительно фильтрует записи. Запрос с дополнительными параметрами обрабатывает задачу за 1 проход по таблице.
+ 
+	 \begin{figure}[H]
+	 	\centering		
+	 	\includegraphics[width=\linewidth]{image/selectLab_02_01_Time}
+	 	\includegraphics[width=\linewidth]{image/selectLab_02_02_Time}
+	 	\caption{Время работы различных запросов (1 - быстрый, 2 - вложенный)}\label{img:selectLab_02_01_Time}
+	 \end{figure}
+ 
+ 	Результат выполнения запроса (\imref{img:selectLab_02_01_Res})
+	 \begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/selectLab_02_01_Res}
+		\caption{Выборка клиентов}\label{img:selectLab_02_01_Res}
+	\end{figure} 
+
+\subsection{Клиенты, у которых дни рождения в текущем месяце}
+
+	Пример кода запроса (\imref{img:selectLab_02_03})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/selectLab_02_03}
+		\caption{Код запроса}\label{img:selectLab_02_03}
+	\end{figure}
+	
+	Выполнение запроса (\imref{img:selectLab_02_03_Res})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/selectLab_02_03_Res}
+		\caption{Результат выполнение запроса}\label{img:selectLab_02_03_Res}
+	\end{figure}
+	
+\subsection{Группы с указанием количества клиентов на сегодняшний день}
+
+	Пример кода запроса (\imref{img:selectLab_02_04})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/selectLab_02_04}
+		\caption{Код запроса}\label{img:selectLab_02_04}
+	\end{figure}
+	
+	Выполнение запроса (\imref{img:selectLab_02_04_Res})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.8\linewidth]{image/selectLab_02_04_Res}
+		\caption{Результат выполнение запроса}\label{img:selectLab_02_04_Res}
+	\end{figure}	
+
+\subsection{Общая продолжительность занятий в каждом зале по дням недели}
+
+	Пример кода запроса (\imref{img:selectLab_02_05})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/selectLab_02_05}
+		\caption{Код запроса}\label{img:selectLab_02_05}
+	\end{figure}
+	
+	Выполнение запроса (\imref{img:selectLab_02_05_Res})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.5\linewidth]{image/selectLab_02_05_Res}
+		\caption{Результат выполнение запроса}\label{img:selectLab_02_05_Res}
+	\end{figure}
+
+\subsection{Расписание занятий в определённом зале}
+
+	Пример кода запроса (\imref{img:selectLab_02_06})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/selectLab_02_06}
+		\caption{Код запроса}\label{img:selectLab_02_06}
+	\end{figure}
+	
+	Выполнение запроса (\imref{img:selectLab_02_06_Res})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/selectLab_02_06_Res}
+		\caption{Результат выполнение запроса}\label{img:selectLab_02_06_Res}
+	\end{figure}
+
+\section{Вывод}
+
+В процессе выполнения практической работы получены навыки взаимодействия с СУБД MySQL. 
+На основе подготовленной базы данных выполнялись различные запросы выборки из таблиц.
+Получены базовые навыки работы с несколькими таблицами, группировкой, сортировкой, функциями агрегирования.
+Для слияния таблиц в данном задании используется INNER JOIN \cite{sql1}.
+Для обработки дат и времени использовались функции MONTH, YEAR, DAYOFWEEK, NOW.
+Для группировки записей используется параметр GROUP BY \cite{sql2}.
+Параметр ORDER BY отвечает за порядок выдачи записей.
+Вложенные запросы работают медленнее чем запросы с дополнительными условиями.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
+\centering 
+\begin{thebibliography}{2} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{sql1} Beaulieu A. Learning SQL: Master SQL Fundamentals. – " O'Reilly Media, Inc.", 2009.
+	\bibitem{sql2}Дейт К. Д. Введение в системы баз данных. – Вильямс, 2008.
+	
+\end{thebibliography}
+
+\end{document} % конец документа
