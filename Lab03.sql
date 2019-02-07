@@ -13,17 +13,16 @@ SELECT coach.*
 FROM coach
 WHERE coach.id NOT IN (SELECT DISTINCT coach_id FROM scheduler);
 
-SELECT * FROM coach;
 SELECT * FROM free_coach;
 
 INSERT INTO free_coach VALUES (21, 'Тренер Без Занятий', 'Инструктор', '86547539426');
-
 UPDATE free_coach SET phone = '80000000000' WHERE id = 1;
-
-DELETE FROM free_coach WHERE id = 1;
+DELETE FROM free_coach WHERE id = 3;
 
 -- Rollback
-INSERT INTO free_coach VALUES (1, 'Сидоров Антон Александвич', 'Младший тренер', '89747827752');
+INSERT INTO free_coach VALUES (1, 'Сидоров Антон Александвич', 'Младший тренер', '89747827752'),
+                              (3, 'Егоров Алексей Георгивич', 'Старший тренер', '89902017277');
+DELETE FROM free_coach WHERE id = 21;
 
 
 -- 2.	Представление "Тренеры групп": группа – тренер.
