@@ -1,0 +1,131 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title_03.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Для созданных представлений необходимо проверить с помощью запросов UPDATE, DELETE и INSERT, являются ли они обновляемыми, и объяснить полученный результат.
+
+\begin{enumerate}
+	\item Представление "Тренеры, у которых нет занятий";
+	\item Представление "Тренеры групп": группа – тренер;
+	\item Представление "Количество текущих клиентов по видам занятий": вид занятий – количество клиентов-мужчин – количество клиентов-женщин.
+\end{enumerate}
+
+\section{Выполнение работы}
+
+\subsection{Тренеры, у которых нет занятий}
+
+	Данное представление может быть создано 2 способами (\imref{img:viewCreate_01}).
+	Первый основан на декартовом произведении таблиц, второй использует вложенный запрос.
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/viewCreate_01}
+		\caption{Варианты создания представления}\label{img:viewCreate_01}
+	\end{figure}
+
+	Выборка данных из представления (\imref{img:viewSelect_01})
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/viewSelect_01}
+		\caption{Выборка данных}\label{img:viewSelect_01}
+	\end{figure}
+ 
+	Второй вариант представления является обновляемым.
+	Пример изменения данных в таблице (\imref{img:viewChange_01}) и результат операции (\imref{img:viewResult_01})
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.9\linewidth]{image/viewChange_01}
+		\caption{Изменение представления}\label{img:viewChange_01}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/viewResult_01}
+		\caption{Изменение представления}\label{img:viewResult_01}
+	\end{figure}
+
+\subsection{<<Тренеры групп>>: группа – тренер}
+
+	Данное представление создаётся с помощью следующей команды (\imref{img:viewCreate_02}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.6\linewidth]{image/viewCreate_02}
+		\caption{Создание представления}\label{img:viewCreate_02}
+	\end{figure}
+	
+	Выборка данных из представления (\imref{img:viewSelect_02})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/viewSelect_02}
+		\caption{Выборка данных}\label{img:viewSelect_02}
+	\end{figure}
+	
+	Данное представление поддерживает обновление данных, однако удаление и вставка записей для него запрещены, так как запрос основан на 2 таблицах (\imref{img:viewResult_02}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/viewResult_02}
+		\caption{Изменение номера телефона у тренера с ID = 2}\label{img:viewResult_02}
+	\end{figure}
+
+\subsection{<<Количество текущих клиентов по видам занятий>>: вид занятий – количество клиентов-мужчин – количество клиентов-женщин}
+
+	Данное представление создаётся с помощью следующей команды (\imref{img:viewCreate_03}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/viewCreate_03}
+		\caption{Создание представления}\label{img:viewCreate_03}
+	\end{figure}
+	
+	Выборка данных из представления (\imref{img:viewSelect_03})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/viewSelect_03}
+		\caption{Выборка данных}\label{img:viewSelect_03}
+	\end{figure}
+	
+	Данное представление не поддерживает обновление данных, так как использует группировку, работу с несколькими таблицами и агрегирующие функции.
+
+\section{Вывод}
+
+В процессе выполнения практической работы получены навыки взаимодействия с СУБД MySQL. 
+На основе подготовленной базы данных созданы представления для удобной выборки сложных данных.
+Кроме того, представления позволяют ограничить доступ пользователей БД к некоторым записям \cite{sql1}.
+Некоторые представление можно создать несколькими способами, при чем, в зависимости от запроса, итоговое представление будет обновляемым или нет.
+Для возможности обновления или удаления данных необходимо взаимно однозначное соответствие между исходными записями в таблице и представлении, поля представлены в виде простых перечислений полей таблиц, представление основано на одной таблице или использует INNER JOIN для нескольких таблиц, при чем изменение доступно только для одной исходной таблицы, а удаление не поддерживает представления на нескольких таблицах \cite{sql2}.
+Представление допускает вставку данных если оно является изменяемым и все поля, которые не представлены в представлении, имеют значения по-умолчанию.
+Получены дополнительные навыки работы с несколькими таблицами, подзапросами, группировкой и функциями агрегирования.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
+\centering 
+\begin{thebibliography}{2} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{sql1} Beaulieu A. Learning SQL: Master SQL Fundamentals. – " O'Reilly Media, Inc.", 2009.
+	\bibitem{sql2}Дейт К. Д. Введение в системы баз данных. – Вильямс, 2008.
+	
+\end{thebibliography}
+
+\end{document} % конец документа
