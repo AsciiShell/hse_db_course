@@ -86,9 +86,9 @@ FROM scheduler_archive;
 
 -- Соединение (join)
 
-SELECT *
+SELECT team.note, scheduler.*
 FROM team
-       INNER JOIN scheduler on team.name = scheduler.team_name;
+       INNER JOIN scheduler ON team.name = scheduler.team_name;
 
 -- Разность (except)
 
