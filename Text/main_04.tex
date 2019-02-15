@@ -1,0 +1,183 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title_04.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Необходимо написать на языке SQL запросы, которые реализуют операции реляционной алгебры. Если для демонстрации операций РА недостаточно отношений, созданных во время выполнения работы №1, то следует создать дополнительные отношения.
+
+\section{Выполнение работы}
+
+\subsection{Проекция}
+
+	Проекция предназначена для выбора атрибутов из множества.
+	Пример операции проекции (\imref{img:4_010}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/4_010}
+		\caption{SQL запрос}\label{img:4_010}
+	\end{figure}
+
+	Выборка данных для данного представления (\imref{img:4_011})
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/4_011}
+		\caption{Выборка данных}\label{img:4_011}
+	\end{figure}
+ 
+ \subsection{Селекция}
+ 
+	 Селекция предназначена для выбора кортежей, удовлетворяющим некоторым условиям.
+	 Пример операции проекции (\imref{img:4_020}).
+	 
+	 \begin{figure}[H]
+	 	\centering		
+	 	\includegraphics[width=0.4\linewidth]{image/4_020}
+	 	\caption{SQL запрос}\label{img:4_020}
+	 \end{figure}
+	 
+	 Выборка данных для данного представления (\imref{img:4_021})
+	 
+	 \begin{figure}[H]
+	 	\centering		
+	 	\includegraphics[width=0.9\linewidth]{image/4_021}
+	 	\caption{Выборка данных}\label{img:4_021}
+	 \end{figure}
+
+ \subsection{Декартово произведение}
+
+	Декартово произведение создаёт комбинацию всех возможных пар исходных представлений.
+	Пример операции проекции (\imref{img:4_030}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/4_030}
+		\caption{SQL запрос}\label{img:4_030}
+	\end{figure}
+	
+	Выборка данных для данного представления.
+	На \imref{img:4_031} отображены первые 17 строк из 200.
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.9\linewidth]{image/4_031}
+		\caption{Выборка данных}\label{img:4_031}
+	\end{figure}
+
+ \subsection{Объединение}
+
+	Объединение создаёт комбинацию всех кортежей исходных отношений.
+	Для данной операции было создано представление $scheduler\_archive$, которое содержит те же атрибуты, что  и $scheduler$. Кортежи с id от 1 до 10 содержатся в обоих представлениях, а другие уникальны.
+	Пример операции проекции (\imref{img:4_040}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/4_040}
+		\caption{SQL запрос}\label{img:4_040}
+	\end{figure}
+	
+
+	
+	Выборка данных для данного представления (\imref{img:4_041})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.9\linewidth]{image/4_041}
+		\caption{Выборка данных}\label{img:4_041}
+	\end{figure}
+
+ \subsection{Соединение}
+
+	Соединение создаёт декартово произведение двух отношений, затем производит селекцию по некоторому атрибуту.
+	Пример операции проекции (\imref{img:4_050}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/4_050}
+		\caption{SQL запрос}\label{img:4_050}
+	\end{figure}
+	
+	Выборка данных для данного представления (\imref{img:4_051})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.9\linewidth]{image/4_051}
+		\caption{Выборка данных}\label{img:4_051}
+	\end{figure}
+
+ \subsection{Разность}
+
+	Разность отношений A и B называется такое отношение, в которое входят все строки A, которых нет в B
+	Пример операции проекции (\imref{img:4_060}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/4_060}
+		\caption{SQL запрос}\label{img:4_060}
+	\end{figure}
+	
+	Выборка данных для данного представления (\imref{img:4_061})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.9\linewidth]{image/4_061}
+		\caption{Выборка данных}\label{img:4_061}
+	\end{figure}
+
+ \subsection{Пересечение}
+
+	Пересечение содержит те кортежи, которые присутствуют в обоих представлениях
+	Пример операции проекции (\imref{img:4_070}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.7\linewidth]{image/4_070}
+		\caption{SQL запрос}\label{img:4_070}
+	\end{figure}
+	
+	Выборка данных для данного представления (\imref{img:4_071})
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.9\linewidth]{image/4_071}
+		\caption{Выборка данных}\label{img:4_071}
+	\end{figure}
+
+\section{Вывод}
+
+В процессе выполнения практической работы получены навыки взаимодействия с СУБД MySQL. 
+В ходе выполнения работы приобретены знания об операциях реляционной алгебры.
+Существует 5 основных операций, через которые можно выразить остальные: проекция, селекция, декартово произведение, объединение, разность \cite{sql1}.
+Дополнительные операции: пересечение, соединение, деление.
+Данные операции необходимы для написания практически всех запросов.
+Некоторые операции редко используются в чистом виде, например декартово произведение, однако часто сочетаются с другими операциями.
+MySQl не поддерживает в чистом виде некоторые операции, например - разность \cite{sql2}.
+Получены дополнительные навыки работы с несколькими таблицами, и сложными запросами.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
+\centering 
+\begin{thebibliography}{2} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{sql1} Beaulieu A. Learning SQL: Master SQL Fundamentals. – " O'Reilly Media, Inc.", 2009.
+	\bibitem{sql2}Дейт К. Д. Введение в системы баз данных. – Вильямс, 2008.
+	
+\end{thebibliography}
+
+\end{document} % конец документа
