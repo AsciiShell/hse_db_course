@@ -1,4 +1,6 @@
 # DB_course
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAsciiShell%2FDB_course.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FAsciiShell%2FDB_course?ref=badge_shield)
+
 Labs and homeworks for DB course
 
 License
@@ -13,3 +15,6 @@ Useful tips
 SHOW ENGINE INNODB STATUS
 
 ```
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAsciiShell%2FDB_course.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FAsciiShell%2FDB_course?ref=badge_large)
