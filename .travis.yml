@@ -1,0 +1,26 @@
+# safelist
+#branches:
+#  only:
+#    - master
+language: bash
+
+services:
+  - docker
+
+before_install:
+  - docker pull hubbitus/latex
+script:
+  - docker run -u root --rm  -it -v $(pwd):/source hubbitus/latex bash ./build.sh
+
+deploy:
+  - provider: releases
+    api_key: $TOKEN
+    file:
+      - "Text/main_01.pdf"
+      - "Text/main_02.pdf"
+      - "Text/main_03.pdf"
+      - "Text/main_04.pdf"
+      
+    skip_cleanup: true
+    on:
+      branch: master
