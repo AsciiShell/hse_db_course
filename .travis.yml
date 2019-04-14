@@ -20,7 +20,7 @@ deploy:
       - "Text/main_02.pdf"
       - "Text/main_03.pdf"
       - "Text/main_04.pdf"
-      
+      - "Text/main_05.pdf"      
     skip_cleanup: true
     on:
       branch: master
