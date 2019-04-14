@@ -1,0 +1,187 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title_05.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+\begin{itemize}
+	\item Подключиться к БД;
+	\item Отразить схемы БД;
+	\item Создать экранные формы с заменой вн. ключа;
+	\item Наличие подчинённой экранной формы;
+	\item 2 больших запроса, каждая таблица участвует как минимум 1 раз;
+	\item 2 больших отчёта, каждая таблица участвует как минимум 1 раз;
+	\item Поисковая форма;
+	\item Главная форма;
+\end{itemize}
+\section{Выполнение работы}
+
+\subsection{Схема БД}
+	Были импортированы 4 таблицы базы данных -- клиенты, группы, расписание и тренера.
+	Размещение связей представлен на \imref{img:5_schema}.
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.8\linewidth]{image/5_schema}
+		\caption{Схема БД}\label{img:5_schema}
+	\end{figure}
+
+ 
+ \subsection{Экранные формы}
+ 
+	 Далее представлены экранные формы.
+	 В каждой из них внешние ключ заменены на читаемое описание (где имеются такие ключи).
+	 На \imref{img:5_coach} и \imref{img:5_team} есть подтаблицы с описанием связанных данных.
+	 На \imref{img:5_scheduler} и \imref{img:5_client} нет никаких подформ.
+	 На \imref{img:5_team_client} дублирует форму для команд, но отображает связанных клиентов в отдельной форме.
+	 
+	 \begin{figure}[H]
+	 	\centering		
+	 	\includegraphics[width=\linewidth]{image/5_coach}
+	 	\caption{Таблица тренеров с подтаблицей групп}\label{img:5_coach}
+	 \end{figure}
+
+	 \begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_scheduler}
+		\caption{Таблица расписания}\label{img:5_scheduler}
+	\end{figure}	 
+
+	 \begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_team}
+		\caption{Таблица команд с подтаблицей расписания}\label{img:5_team}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_client}
+		\caption{Таблица клиентов}\label{img:5_client}
+	\end{figure}	
+	 \begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_team_client}
+		\caption{Таблица команд со списком клиентов в них}\label{img:5_team_client}
+	\end{figure}
+	
+
+ \subsection{Запросы}
+
+	Данный запрос подсчитывает количество клиентов на каждый вид занятий группы в понедельник (\imref{img:5_req_group}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.4\linewidth]{image/5_req_group}
+		\caption{Запрос список занятий по группам на понедельник}\label{img:5_req_group}
+	\end{figure}
+	
+	
+	\lstinputlisting[language=sql]{code/5_req_group.sql}
+	
+	
+	Данный выводит расписание занятий в понедельник (\imref{img:5_req_scheduler}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_req_scheduler}
+		\caption{Запрос расписания на понедельник}\label{img:5_req_scheduler}
+	\end{figure}
+	
+	
+	\lstinputlisting[language=sql]{code/5_req_scheduler.sql}
+	
+	
+	Данный выводит расписание каждого занятого тренера (\imref{img:5_req_coach_scheduler}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_req_coach_scheduler}
+		\caption{Запрос расписания тренеров}\label{img:5_req_coach_scheduler}
+	\end{figure}
+	
+	
+	\lstinputlisting[language=sql]{code/5_req_coach_scheduler.sql}
+\subsection{Отчёты}
+
+	Данный отчёт выводит список клиентов в каждой группе (\imref{img:5_report_client_team}).
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_report_client_team}
+		\caption{Отчёт по клиентам}\label{img:5_report_client_team}
+	\end{figure}
+
+	Данный отчёт нагрузку тренеров (\imref{img:5_report_coach_scheduler}).
+
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_report_coach_scheduler}
+		\caption{Отчёт по тренерам}\label{img:5_report_coach_scheduler}
+	\end{figure}
+
+\subsection{Поисковая форма}
+
+	Поиск клиентов по ФИО (\imref{img:5_find_1}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_find_1}
+		\caption{Поиск клиентов по ФИО}\label{img:5_find_1}
+	\end{figure}
+	
+	Поиск клиентов по ФИО и группе (\imref{img:5_find_2}).
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=\linewidth]{image/5_find_2}
+		\caption{Поиск клиентов по ФИО и группе}\label{img:5_find_2}
+	\end{figure}
+
+\subsection{Итоговая форма}
+
+	Итоговая форма со ссылками на основные элементы БД представлена на \imref{img:5_mainform}.
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.5\linewidth]{image/5_mainform}
+		\caption{Главная форма}\label{img:5_mainform}
+	\end{figure}
+	
+\section{Вывод}
+
+В процессе выполнения практической работы получены навыки взаимодействия с СУБД MS Access и MySQL. 
+В ходе выполнения работы приобретены знания о взаимодействии с пользовательским интерфейсом MS Access.
+Были созданы формы отображения данных, в которых малоинформативное значения внешнего ключа заменялось удобочитаемым текстовым представлением \cite{sql2}.
+Были созданы подчинённые формы для отображения связанных данных.
+Были написаны запросы, в том числе с использованием соединения таблиц \cite{sql1}
+Так же была произведена генерация удобных человекочитаемых отчётов о загруженности тренеров и групп.
+Кроме того, была разработана поисковая форма для поиска клиентов с определённым именем или входящих в некоторую группу.
+Была создана форма для удобной навигации между основными элементами решения.
+Получены дополнительные навыки работы с несколькими таблицами, и сложными запросами.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
+\centering 
+\begin{thebibliography}{2} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{sql2} Кузин А. В., Демин В. М. Разработка баз данных в системе Microsoft Access. -- Издательство: "Форум", 2007. -- 223 с.
+	\bibitem{sql1} Beaulieu A. Learning SQL: Master SQL Fundamentals. – " O'Reilly Media, Inc.", 2009.
+
+	
+\end{thebibliography}
+
+\end{document} % конец документа
