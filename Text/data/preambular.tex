@@ -247,3 +247,17 @@
 
 \usepackage{xcolor,listings}
 \usepackage{textcomp}
+
+% listing
+\usepackage{listings}
+\newcommand{\listingsfont}{\small}
+\lstset{
+	%basicstyle=\small,
+	basicstyle=\linespread{0.8}\listingsfont,
+	numbers=left,
+	breaklines=true,
+	%backgroundcolor=\color{light-gray},
+	tabsize=2,
+	%basicstyle=\ttfamily,
+	literate={\ \ }{{\ }}1
+}
