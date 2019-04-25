@@ -8,7 +8,7 @@ services:
   - docker
 
 before_install:
-  - docker pull hubbitus/latex
+  - docker pull asciishell/docker-latex
 script:
   - docker run -u root --rm  -it -v $(pwd):/source asciishell/docker-latex bash ./build.sh
 
