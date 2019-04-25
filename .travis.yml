@@ -10,7 +10,7 @@ services:
 before_install:
   - docker pull hubbitus/latex
 script:
-  - docker run -u root --rm  -it -v $(pwd):/source hubbitus/latex bash ./build.sh
+  - docker run -u root --rm  -it -v $(pwd):/source asciishell/docker-latex bash ./build.sh
 
 deploy:
   - provider: releases
