@@ -64,3 +64,5 @@ fabric.properties
 *.pdf
 
 *.aux
+
+\.idea/dataSources\.xml
