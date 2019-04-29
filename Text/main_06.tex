@@ -1,0 +1,80 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title_06.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+\begin{figure}[H]
+	\centering		
+	\includegraphics[width=\linewidth]{image/6_task}
+	\caption{Задание работы}\label{img:6_task}
+\end{figure}
+
+\section{Выполнение работы}
+
+\subsection{Функция окончания}
+	Была создана функция (\imref{img:6_func}).
+	Результат работы представлен на \imref{img:6_func_result}.
+	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.8\linewidth]{image/6_func}
+		\caption{Функция обработки времени}\label{img:6_func}
+	\end{figure}
+
+ 	\begin{figure}[H]
+	 	\centering		
+	 	\includegraphics[width=0.8\linewidth]{image/6_func_result}
+	 	\caption{Результат функции обработки времени}\label{img:6_func_result}
+	 \end{figure}
+ 
+ \subsection{Функция окончания}
+	 Была создана процедура (\imref{img:6_proc}).
+	 Результат работы представлен на \imref{img:6_proc_result}.
+	 
+	 \begin{figure}[H]
+	 	\centering		
+	 	\includegraphics[width=\linewidth]{image/6_proc}
+	 	\caption{Процедура расписания в зале}\label{img:6_proc}
+	 \end{figure}
+	 
+	 \begin{figure}[H]
+	 	\centering		
+	 	\includegraphics[width=0.8\linewidth]{image/6_proc_result}
+	 	\caption{Результат процедуры вывода расписания}\label{img:6_proc_result}
+	 \end{figure}
+
+\section{Вывод}
+
+В процессе выполнения практической работы получены навыки взаимодействия с СУБД Oracle.
+Было затрачено много ресурсов на конвертацию кода, работающего на СУБД MySQL в СУБД Oracle \cite{sql1}.
+Были заменены триггеры на check, enum на char.
+Был убран AUTO INCREMENT, Engine.
+Вставки записей были развиты до отдельных запросов на каждую запись.
+В ходе самой работы были созданы процедуры и функции на языке PL/SQL.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
+\centering 
+\begin{thebibliography}{2} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{sql1} Beaulieu A. Learning SQL: Master SQL Fundamentals. – " O'Reilly Media, Inc.", 2009.
+
+	
+\end{thebibliography}
+
+\end{document} % конец документа
