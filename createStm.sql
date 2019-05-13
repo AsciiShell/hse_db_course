@@ -18,7 +18,20 @@ CREATE TABLE clients
     CONSTRAINT fk_team_client FOREIGN KEY (team_name) REFERENCES team (name) ON DELETE CASCADE,
     CONSTRAINT ch_ticket CHECK (endTicket >= startTicker)
 );
-
+CREATE TABLE clients_archive
+(
+    fio         VARCHAR(100),
+    ticket      INTEGER,
+    team_name   VARCHAR(40),
+    birthday    DATE,
+    gender      CHAR(1),
+    weigh       INTEGER,
+    startTicker DATE,
+    endTicket   DATE,
+    phone       CHAR(11),
+    archived_at DATE          NOT NULL,
+    archived_by VARCHAR2(100) NOT NULL
+);
 
 CREATE TABLE coach
 (
